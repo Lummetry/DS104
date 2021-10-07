@@ -1,4 +1,4 @@
-# DS104 - Data Science with Deep Learning 2021-20222
+# DS104 - Data Science with Deep Learning 2021-2022
 _From dataset understanding to result presentation and how to employ deep acyclic graph models in Predictive Analytics_
 
 ## Operational and logistics stuff
