@@ -18,15 +18,18 @@ def set_pretty_prints():
   pd.set_option('display.max_columns', 500)
   pd.set_option('display.max_colwidth', 500)
   pd.set_option('display.width', 1000)
-  pd.set_option('precision', 4)    
+  pd.set_option('precision', 4)
+
   np.set_printoptions(precision=2)
   np.set_printoptions(suppress=True)
+  np.set_printoptions(threshold=np.inf)
+  np.set_printoptions(linewidth=500)
   plt.style.use('ggplot')
   return
   
   
   
-def load_dataset(dataset_name, dev_slice=0.1, normalize=True):
+def load_sklearn_dataset(dataset_name, dev_slice=0.1, normalize=True):
   func_name = 'load_'+dataset_name
   if not hasattr(datasets, func_name):
     func_name = 'fetch_'+dataset_name
@@ -41,8 +44,7 @@ def load_dataset(dataset_name, dev_slice=0.1, normalize=True):
   X = obj.data.astype(np.float32)
   y = obj.target.reshape((-1,1)).astype(np.float32)
   if normalize:
-    X = (X - X.mean(axis=0)) / X.std(axis=0)
-    
+    X = (X - X.mean(axis=0)) / X.std(axis=0)    
   
   x_trn, x_ttt, y_trn, y_ttt = train_test_split(X, y, test_size=dev_slice * 2)
   
